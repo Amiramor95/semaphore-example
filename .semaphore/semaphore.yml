@@ -31,10 +31,10 @@ blocks:
       jobs:
         - name: phpmd
           commands:
-            - sudo php vendor/bin/phpmd app/ text phpmd_ruleset.xml
+            - sudo php app/vendor/bin/phpmd
         - name: phpcs
           commands:
-            - sudo php vendor/bin/phpcs app --report-full --standard=PSR2
+            - sudo php app/vendor/bin/phpcs --report-full --standard=PSR2
         - name: phpcpd
           commands:
             - 'curl -L https://phar.phpunit.de/phpcpd.phar -o phpcpd.phar'
