@@ -23,8 +23,8 @@ blocks:
             - cache store
             - cp .env.example .env
             - 'php artisan key:generate'
-        - name: Run Code Analysis
-          task:
+  - name: Run Code Analysis
+    task:
             prologue:
               commands:
                 - checkout
