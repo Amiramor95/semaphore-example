@@ -4,19 +4,39 @@ agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu2004
-
 blocks:
-  - name: Test
+  - name: Tests
     task:
+      prologue:
+        commands:
+          - sem-version php 8.0
       jobs:
-        - name: Test
+        - name: Tests
+          commands:
+            - php --version
+        - name: composer
           commands:
             - checkout
             - cache restore
             - composer install
+            - npm install
             - cache store
             - cp .env.example .env
-            - php artisan key:generate
-            - mkdir -p database
-            - touch database/database.sqlite
-            - ./vendor/bin/phpunit
+            - 'php artisan key:generate'
+  - name: Run Code Analysis
+    task:
+      prologue:
+        commands:
+          - checkout
+          - cache restore
+      jobs:
+        - name: phpmd
+          commands:
+            - php vendor/bin/phpmd app/ text phpmd_ruleset.xml
+        - name: phpcs
+          commands:
+            - php vendor/bin/phpcs app --report-full --standard=PSR2
+        - name: phpcpd
+          commands:
+            - 'curl -L https://phar.phpunit.de/phpcpd.phar -o phpcpd.phar'
+            - php phpcpd.phar app/ --min-lines=50
