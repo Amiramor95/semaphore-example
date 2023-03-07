@@ -11,6 +11,8 @@ sites:
 blocks:
   - name: Test
     task:
+      commands:
+        - sem-version php 8.2.25
       jobs:
         - name: Test
           commands:
@@ -23,3 +25,4 @@ blocks:
             - mkdir -p database
             - touch database/database.sqlite
             - ./vendor/bin/phpunit
+            - php --version
