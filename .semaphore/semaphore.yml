@@ -28,9 +28,7 @@ blocks:
       prologue:
         commands:
           - checkout
-          - cache restore
-          - composer install
-          - npm install
+          - cache restore - sem-version php 8.0
       jobs:
         - name: phpmd
           commands:
