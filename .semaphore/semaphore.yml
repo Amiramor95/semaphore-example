@@ -23,3 +23,13 @@ blocks:
             - cache store
             - cp .env.example .env
             - 'php artisan key:generate'
+    dependencies: []
+  - name: Code Analysis
+    dependencies:
+      - Tests
+    task:
+      prologue:
+        commands:
+          - checkout
+          - cache restore
+      jobs: []
