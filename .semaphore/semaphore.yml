@@ -9,7 +9,7 @@ blocks:
     task:
       prologue:
         commands:
-          - sem-version php 5.6
+          - sem-version php 8.0
       jobs:
         - name: Tests
           commands:
