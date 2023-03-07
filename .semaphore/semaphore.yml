@@ -15,3 +15,12 @@ blocks:
           commands:
             - php --version
             - composer install
+        - name: composer
+          commands:
+            - checkout
+            - cache restore
+            - composer install
+            - npm install
+            - cache store
+            - cp .env.example .env
+            - 'php artisan key:generate'
