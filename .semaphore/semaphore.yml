@@ -27,11 +27,14 @@ blocks:
     task:
       prologue:
         commands:
-          - sem-version php 8.2 - checkout - cache restore
+          - sem-version php 8.2
+          - checkout
+          - cache restore
       jobs:
         - name: phpmd
           commands:
-            - php --version - php vendor/bin/phpmd app/ text phpmd_ruleset.xml
+            - php --version
+            - php vendor/bin/phpmd app/ text phpmd_ruleset.xml
         - name: phpcs
           commands:
             - php vendor/bin/phpcs app --report-full --standard=PSR2
