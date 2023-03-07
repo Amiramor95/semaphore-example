@@ -27,7 +27,6 @@ blocks:
     task:
       prologue:
         commands:
-          - sem-version php 8.2
           - checkout
           - cache restore
       jobs:
