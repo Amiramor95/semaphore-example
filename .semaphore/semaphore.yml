@@ -32,10 +32,10 @@ blocks:
       jobs:
         - name: phpmd
           commands:
-            - php vendor/bin/phpmd app/ text phpmd_ruleset.xml
+            - php vendor/bin/phpmd.bat
         - name: phpcs
           commands:
-            - php vendor/bin/phpcs app --report-full --standard=PSR2
+            - php vendor/bin/phpcs.bat --report-full --standard=PSR2
         - name: phpcpd
           commands:
             - 'curl -L https://phar.phpunit.de/phpcpd.phar -o phpcpd.phar'
