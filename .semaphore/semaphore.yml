@@ -9,7 +9,7 @@ blocks:
     task:
       prologue:
         commands:
-          - sem-version php 8.2
+          - sem-version php 8.0
       jobs:
         - name: Tests
           commands:
@@ -27,8 +27,7 @@ blocks:
     task:
       prologue:
         commands:
-          - checkout
-          - cache restore
+          - sem-version php 8.0 - checkout - cache restore
       jobs:
         - name: phpmd
           commands:
